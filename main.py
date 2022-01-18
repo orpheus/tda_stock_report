@@ -91,7 +91,7 @@ def fetch_ticker_data(ticker):
     html = driver.page_source
     soup = bs4(html, "lxml")
     with open('ticker_data/{}.html'.format(ticker), 'w') as out_file:
-        out_file.write(str(soup))
+        out_file.write(html)
         # toDo: write the correct html to static pages and use BS4 on
         # static files to get the logic correct and then import that
         # logic back here to grab all the necessary data
