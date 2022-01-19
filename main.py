@@ -72,23 +72,52 @@ def login():
 
     print("Waiting for manual auth entry..")
     try:
-        element = WebDriverWait(driver, 30).until(
+        element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.ID, "trustthisdevice0_0")))
+    except TimeoutException as e:
+        print("Error: TimeoutException: Could not find the `trust this device` element")
+        driver.quit()
+        return
+
+    print("Auth code entered..")
+
+    # element = driver.find_element(By.ID, "trustthisdevice0_0")
+    # element.click()
+    # driver.find_element(By.ID, 'accept').click()
+
+    try:
+        element = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "siteSearch")))
     except TimeoutException as e:
         print("Error: Timeout exception: Manual 2Auth not completed in time")
         driver.quit()
-        driver.close()
         return
 
 
 def fetch_ticker_data(ticker):
+    driver.switch_to.default_content()
     print("Fetching data for ticker: {}..".format(ticker))
     search = driver.find_element(By.ID, "siteSearch")
     search.clear()
     search.send_keys(ticker)
     search.send_keys(Keys.RETURN)
+    # Need to sleep to allow JS to modify the page with data, else it
+    # won't be found in the page source
+    try:
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, 'main')))
+    except TimeoutException:
+        print('Page timed out waiting for stock page to load.')
+        # driver.close()
+        return 1
 
+    driver.switch_to.frame('main')
     html = driver.page_source
+
+    try:
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'companyName')))
+    except TimeoutException:
+        print('Timeout occured waiting for main iframe to load')
+        return 1
+ 
     soup = bs4(html, "lxml")
     with open('ticker_data/{}.html'.format(ticker), 'w') as out_file:
         out_file.write(html)
@@ -100,7 +129,9 @@ def fetch_ticker_data(ticker):
 def generate_report():
     print("Generating report..")
     for ticker in tickers:
-        fetch_ticker_data(ticker)
+        ret = fetch_ticker_data(ticker)
+        if ret != None:
+            return 1
 
 
 def run():
