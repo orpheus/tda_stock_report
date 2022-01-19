@@ -1,4 +1,5 @@
 from os import environ
+from time import time
 
 from bs4 import BeautifulSoup as bs4
 
@@ -25,7 +26,8 @@ tickers = [
     'SUSA',
     'ERTH',
     'FIW',
-    'SDGA'
+    'SDGA',
+    'AMRC'
 ]
 
 chromedriver_path = './bin/chromedriver'
@@ -93,34 +95,59 @@ def login():
         return
 
 
+def wait_until(EC=None, timeout_msg=None, timeout=10):
+    try:
+        WebDriverWait(driver, timeout).until(EC)
+    except TimeoutException:
+        if timeout_msg:
+            print(timeout_msg)
+        return 1
+
+
+# Use to increase the wait time of the first ticker search
+first_load=True
+
+
 def fetch_ticker_data(ticker):
     driver.switch_to.default_content()
+
     print("Fetching data for ticker: {}..".format(ticker))
     search = driver.find_element(By.ID, "siteSearch")
     search.clear()
     search.send_keys(ticker)
     search.send_keys(Keys.RETURN)
-    # Need to sleep to allow JS to modify the page with data, else it
-    # won't be found in the page source
+    
     try:
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, 'main')))
     except TimeoutException:
-        print('Page timed out waiting for stock page to load.')
-        # driver.close()
+        print('Page timed out waiting for main iframe to load.')
         return 1
 
     driver.switch_to.frame('main')
+
+    global first_load
+    wait_time = 3 if first_load else 1
+
+    stock_frame = wait_until(EC.presence_of_element_located((By.ID, 'layout-header')), timeout=wait_time)
+    # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
+    etf_frame = wait_until(EC.presence_of_element_located((By.ID, 'companyName')), timeout=wait_time)
+    # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
+    # bond_frame etc
+    
+    if stock_frame is not None and etf_frame is not None:
+        print("Could not find Stock or ETF frame")
+        return 1
+
+    first_load = False
+
+    # elem = driver.find_element(By.TAG_NAME, "title")
+
     html = driver.page_source
 
-    try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'companyName')))
-    except TimeoutException:
-        print('Timeout occured waiting for main iframe to load')
-        return 1
- 
-    soup = bs4(html, "lxml")
+    # soup = bs4(html, "lxml")
     with open('ticker_data/{}.html'.format(ticker), 'w') as out_file:
         out_file.write(html)
+        print('Wrote {} frame html to file'.format(ticker))
         # toDo: write the correct html to static pages and use BS4 on
         # static files to get the logic correct and then import that
         # logic back here to grab all the necessary data
