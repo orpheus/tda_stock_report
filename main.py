@@ -1,5 +1,5 @@
 from os import environ
-from time import time
+from time import sleep, time
 
 from bs4 import BeautifulSoup as bs4
 
@@ -125,6 +125,23 @@ def fetch_ticker_data(ticker):
 
     driver.switch_to.frame('main')
 
+    # ticker_frame_loaded = False
+    # while ticker_frame_loaded is False:
+        # check stock frame for ticker text
+        # check etf frame for ticker text
+        # sleep(0.1)
+    
+    # determine asset type via frame title or other means
+
+    # switch on asset type and extract data
+        # ticker_data = extract_ticker_data_from_html(<asset_type>, driver.page_source)
+        # global ticker_data_map
+        # ticker_data_map[ticker] = ticker_data
+        # return
+
+    # remove code below
+        
+
     global first_load
     wait_time = 3 if first_load else 1
 
@@ -133,14 +150,12 @@ def fetch_ticker_data(ticker):
     etf_frame = wait_until(EC.presence_of_element_located((By.ID, 'companyName')), timeout=wait_time)
     # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
     # bond_frame etc
-    
+
     if stock_frame is not None and etf_frame is not None:
         print("Could not find Stock or ETF frame")
         return 1
 
     first_load = False
-
-    # elem = driver.find_element(By.TAG_NAME, "title")
 
     html = driver.page_source
 
