@@ -159,7 +159,7 @@ def extract_stock_data(html):
 
     profile = soup.title.text
     company_name = soup.find('span', 'stock-title').text
-    current_price = soup.find(text='Closing Price').parent.next_sibling.text
+    current_price = soup.find(text='Price').parent.next_sibling.text
     market_cap = get_sum_data('Market Cap')
     avg_vol_ten_day = get_sum_data('Avg Vol (10-day)')
     eps = get_sum_data('EPS (TTM, GAAP)')

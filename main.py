@@ -11,27 +11,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-from soup import extract_etf_data_from_file, extract_ticker_data_from_html
+from soup import extract_ticker_data_from_html
+from portfolios import portfolios
 
-
-tickers = [
-    'DSI',
-    'CGW',
-    'ESG',
-    'USSG',
-    'PHO',
-    'ETHO',
-    'VEGN',
-    'KRMA',
-    'ESG',
-    'ESGV',
-    'SUSA',
-    'ERTH',
-    'FIW',
-    'SDGA',
-    'AMRC',
-    'SWPPX'
-]
 
 chromedriver_path = './bin/chromedriver'
 service = Service(executable=chromedriver_path)
@@ -108,6 +90,7 @@ def wait_until(EC=None, timeout_msg=None, timeout=10):
 
 
 def fetch_ticker_data(ticker):
+    sleep(1) # Give some padding time in between tickers
     driver.switch_to.default_content()
 
     print("Fetching data for ticker: {}..".format(ticker))
@@ -135,7 +118,8 @@ def fetch_ticker_data(ticker):
             return False
 
     count = 0 # ~30sec timeout
-    while count < 30:
+    max_timeout_sec = 5
+    while count < max_timeout_sec:
         stock_frame = did_ticker_load("//span[@class='exchange']/span[@class='symbol']")
         etf_mf_frame = did_ticker_load("//h2[@id='companyName']/span[@class='symbol']")
         
@@ -157,9 +141,9 @@ def fetch_ticker_data(ticker):
         print('Loading stock frame...')
         sleep(1)
 
-    if count > 30:
-        print("ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker))
-        return None, "ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker)
+    print("ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker))
+    return {}
+        
 
     # ----------- write to file -------------
 
@@ -171,13 +155,11 @@ def fetch_ticker_data(ticker):
 
     # ----------- write to file -------------
 
-def generate_report():
+def generate_report(tickers):
     print("Generating report..")
     report_map = {}
     for ticker in tickers:
         data = fetch_ticker_data(ticker)
-        if data is None:
-            return
         data['ticker'] = ticker
         report_map[ticker] = data
     print("Report map generated")
@@ -191,7 +173,7 @@ def run():
     print("Starting..")
     open_tdameritrade()
     login()
-    report_map = generate_report()
+    report_map = generate_report(portfolios['luna'])
     if report_map is None:
         return
     write_report_to_sheet(report_map)
