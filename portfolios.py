@@ -30,7 +30,7 @@ luna = [
     'SPOT',
     'MSFT',
     'O',
-    'AMAZN',
+    'AMZN',
     'PENN',
     'KO',
     'GOOGLE',

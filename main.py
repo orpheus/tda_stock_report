@@ -155,15 +155,35 @@ def fetch_ticker_data(ticker):
 
     # ----------- write to file -------------
 
+
+# Cache ticker data to skip repeat pulls
+ticker_cache = {}
+
+
 def generate_report(tickers):
     print("Generating report..")
     report_map = {}
     for ticker in tickers:
-        data = fetch_ticker_data(ticker)
-        data['ticker'] = ticker
-        report_map[ticker] = data
+        if ticker in ticker_cache:
+            report_map[ticker] = ticker_cache[ticker]
+        else:
+            data = fetch_ticker_data(ticker)
+            data['ticker'] = ticker
+
+            ticker_cache[ticker] = data
+            report_map[ticker] = data
+
     print("Report map generated")
     return report_map
+
+
+def generate_portfolio_report(portfolios):
+    portfolio_report = {}
+    for investor in portfolios:
+        report_map = generate_report(portfolios[investor])
+        portfolio_report[investor] = report_map
+    
+    return portfolio_report
 
 
 def write_report_to_sheet(report_map):
@@ -173,10 +193,9 @@ def run():
     print("Starting..")
     open_tdameritrade()
     login()
-    report_map = generate_report(portfolios['luna'])
-    if report_map is None:
-        return
-    write_report_to_sheet(report_map)
+    portfolio_report = generate_portfolio_report(portfolios)
+    write_report_to_sheet(portfolio_report)
+    print("Done.")
 
 
 if __name__ == '__main__':
