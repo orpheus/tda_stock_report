@@ -1,0 +1,1168 @@
+<html><head>
+	<title>Mutual Fund Profiles</title>
+	
+	<meta name="title" content="Mutual Fund">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="imagetoolbar" content="false">
+	<meta name="MSSmartTagsPreventParsing" content="true">
+	<meta name="type" content="research">
+
+	
+		<link type="text/css" rel="stylesheet" href="https://media.tdameritrade.com/media/css/tdasans_remote.css">
+	
+
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+		
+		<script language="javascript">
+			var pageStartTime = new Date();
+			function eventBufferObject() {
+	this.buffer = [];
+	this.add = function(func) {
+		this.buffer[this.buffer.length] = func;
+	}
+	this.load = function(inspect) {
+		for (var x = 0; x < this.buffer.length; x++) {
+			if (inspect) {
+				alert(this.buffer[x].toString());
+			}
+			if (typeof(this.buffer[x]) == "string") {
+				eval(this.buffer[x])
+			} else {
+				this.buffer[x]();
+			}
+		}
+	}
+	this.dump = function() {
+		for (var x = 0; x < this.buffer.length; x++) {
+			alert(this.buffer[x].toString());
+		}
+	}
+}
+
+			var loadBuffer = new eventBufferObject();
+			
+			onload=function() {	
+				loadBuffer.load();
+			}
+
+			var resizeBuffer = new eventBufferObject();
+			onresize = function() {
+				resizeBuffer.load();
+			}
+
+			var pageHelpText = "Show&nbsp;Me";
+			var gGlobalPath = "/grid/wwws/";
+			var gSessionSeedDomain = "https://invest.ameritrade.com";
+			var gEnvironment = "P";
+
+			
+
+			var gIsPrivate = true;
+			var gIsPublic = !gIsPrivate;
+			var gIsPopup = checkIfPopup();
+			var gIsGrid = true;
+			var gIsGreen = false;
+			var gIsiOS = false;
+			var gIsTouchDevice = ('ontouchstart' in document.documentElement);
+			var gFeatureVendorCookie = true;
+			var gIsDebugOn = false;
+			var gIsGSA = false;
+			
+			var gShowMarketMonitor = true;
+			var gPageSection = "mutualfunds"; /*TT0283123*/
+			var gPageSectionSymbol = "SWPPX";
+			var gIsAccessToTrade = true;
+			var gShowOldPage = "0"; /*TDAM-1330; to prevent redirecting to .NET, maintaining classic state*/
+
+			if (typeof window.MOD == "undefined") { window.MOD = {}; }
+			window.MOD.VendorCookieName = "invest_VENDOR"; 
+			var wsod_Translations = {"Low":"Low","High":"High","Previous":"Previous","Next":"Next","Report":"Report","|TEXTREPLACE1| of |TEXTREPLACE2|":"|TEXTREPLACE1| of |TEXTREPLACE2|","Headline":"Headline","Report Date":"Report Date","Options involve risk and are not suitable for all investors. Detailed information on our policies and the risks associated with options can be found in the |TEXTREPLACE1|, |TEXTREPLACE2|, and by downloading the |TEXTREPLACE3| from The Options Clearing Corporation, or by requesting a copy from your |TEXTREPLACE4|. Market volatility, volume, and system availability may impact account access and trade execution. Supporting documentation for any claims will be supplied upon request.":"Options involve risk and are not suitable for all investors. Detailed information on our policies and the risks associated with options can be found in the <a href='http://www.scottrade.com/formscenter/Options.asp' title='Scottrade Options Application and Agreement' target='_new'>Scottrade Options Application and Agreement</a>, <a href='http://www.scottrade.com/formscenter/PDF/111_BrokAccAgreement.pdf' title='Brokerage Account Agreement' target='_new'>Brokerage Account Agreement</a>, and by downloading the <a href='http://www.optionsclearing.com/about/publications/character-risks.jsp' title='Characteristics and Risks of Standardized Options and Supplements (PDF)' target='_new'>Characteristics and Risks of Standardized Options and Supplements (PDF)</a> from The Options Clearing Corporation, or by requesting a copy from your <a href='http://scottrade.know-where.com/scottrade/' title='local branch office' target='_new'>local branch office</a>. Market volatility, volume, and system availability may impact account access and trade execution. Supporting documentation for any claims will be supplied upon request.","Declines":"Declines","Advances":"Advances","Unchanged":"Unchanged","Advances &amp; Declines":"Advances &amp; Declines","NYSE":"NYSE","NYSE&nbsp;MKT":"NYSE&nbsp;MKT","NASDAQ":"NASDAQ","Total":"Total","Up Volume":"Up Volume","Down Volume":"Down Volume","Volume":"Volume","New Highs/Lows":"New Highs/Lows","New Highs":"New Highs","New Lows":"New Lows","Selected":"Selected","Loading...this may take a few moments.":"Loading...this may take a few moments."};
+			function recurseObject() {
+
+			}
+
+			function checkIfPopup() {
+				var displayPopup = false;
+				var domain = "https://invest.ameritrade.com";
+				var windowLocation,
+					openerLocation;
+
+				try {
+					windowLocation = (window.location.protocol+"//"+window.location.host);
+				} catch (e) {
+					windowLocation = ""
+				}
+
+				try {
+					openerLocation = (window.opener.location.protocol+"//"+window.opener.location.host);
+				} catch (e) {
+					openerLocation = ""
+				}
+
+				
+				if (displayPopup) {
+					return true;
+				}
+				if (openerLocation == windowLocation) {
+					return true;
+				}				
+				if (openerLocation ==  domain) {
+					return true;
+				}
+				
+
+				return false;			
+			}
+
+			
+		</script>
+		<script type="text/javascript" src="/grid/wwws/common/scripts/scriptsCache.asp?version=43777.92575231481"></script>
+				<link rel="stylesheet" type="text/css" href="/tdameritrade/grid/common/styles/common.css.asp?version=43777.92575231481" media="all">
+				<link rel="stylesheet" type="text/css" href="/grid/wwws/common/styles/stocks.css.asp?version=43777.92575231481" media="all">
+				<link rel="stylesheet" type="text/css" href="/grid/wwws/common/styles/funds.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/tdameritrade/grid/etfs/overview/etfquiz/style.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/tdameritrade/grid/common/styles/assetAllocation.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/tdameritrade/grid/common/styles/grid/fund.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/grid/wwws/stocks/overview/overview.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/grid/wwws/common/styles/page.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/grid/wwws/stocks/reports/reports.css" media="all">
+				<link rel="stylesheet" type="text/css" href="/grid/wwws/mutualfunds/profile/profile.css" media="all">
+				<script language="JavaScript" type="text/javascript" src="/tdameritrade/grid/etfs/overview/etfquiz/script.js?v=43542"></script>
+				<script language="JavaScript" type="text/javascript" src="/tdameritrade/grid/common/scripts/messages.js"></script>
+				<script language="JavaScript" type="text/javascript" src="/tdameritrade/grid/common/scripts/funds.js?v=43542"></script>
+				<script language="JavaScript" type="text/javascript" src="/grid/wwws/common/scripts/tdAnalyticsTracking.js"></script>
+				<script language="JavaScript" type="text/javascript" src="/grid/wwws/stocks/reports/reports.js"></script>
+
+			<script type="text/javascript">
+			try{
+				if(window.Common && Common.setEnviron) {
+					Common.setEnviron('https://invest.ameritrade.com');
+				}
+			} catch(e){}
+			</script>
+			
+
+				<script language="JavaScript" type="text/javascript" src="https://invest.ameritrade.com/amer/scripts/more.js"></script>
+				<script language="JavaScript" type="text/javascript" src="https://invest.ameritrade.com/amer/scripts/researchmore_funcs.js"></script>
+				<script language="JavaScript" type="text/javascript" src="https://invest.ameritrade.com/amer/scripts/researchmore_3rdParty.js"></script><script type="text/javascript" src="https://invest.ameritrade.com/non-amd/ent/touchUpHandlers.js"></script>
+				<script language="JavaScript" type="text/javascript">var $TDA = jQuery.noConflict(true);</script>
+				<script language="JavaScript" type="text/javascript" src="https://invest.ameritrade.com/amer/scripts/streamer.js"></script>
+				<script language="JavaScript" type="text/javascript" src="https://invest.ameritrade.com/amer/scripts/thirdparty.js"></script>
+				<script language="JavaScript" type="text/javascript" src="/tdameritrade/grid/common/tdamNav/tda_sidemenu.js"></script>
+				
+				<link rel="stylesheet" type="text/css" href="https://invest.ameritrade.com/amer/css/thirdLevelNav.css">
+				
+				
+					<link rel="stylesheet" type="text/css" href="https://invest.ameritrade.com/amer/css/thirdparty-mod.css">
+				
+								
+				
+				<script language="JavaScript" type="text/javascript">
+					var loaderurl = "https://invest.ameritrade.com/cgi-bin/apps/u/ThirdPartyUrlLauncher/new";
+					var target = "?target=pageload";
+
+					loadBuffer.add(function() {
+						try {
+
+							if (window.vendorLinks) {
+
+								if("" == "popup") {
+										target = "";
+								}
+								window.vendorLinks.location.replace(loaderurl+target);
+							}
+						} catch(e) { }
+					});
+
+				</script>
+
+
+				<style type="text/css">
+
+				div.mi{background:url(https://invest.ameritrade.com/amer/images/more.gif) 0px 0px no-repeat; width:13px ;height:13px;}
+				div.mi a{display: block;width:13px ;height:13px;}
+				div.mi a:hover{background-color: transparent;}
+
+				
+
+				</style>
+
+				<script type="text/javascript">
+				var morePermissions = [];
+				morePermissions["triggers"] = "Y";
+				morePermissions["qscope"] = "Y"; //"N";
+				morePermissions["newssubscription"] = "N";
+				morePermissions["options"] = "Y";
+				morePermissions["alerts"] = "Y";
+				morePermissions["trade"] = "Y"; // handles TD's hide/show buy sell links in carrot overlay
+
+				if (typeof initMore != "undefined") {
+					loadBuffer.add("initMore()");
+				}
+				</script>
+			
+		<script type="text/javascript">
+			try {
+				mboxCreate("sitelet_style");
+			} catch(e){}
+		</script>
+		<link rel="stylesheet" type="text/css" href="/tdameritrade/grid/common/styles/grid/grid.css?v=43542">
+	</head>
+
+	
+	<body class="modern W3C mac chrome v97 thirdParty-mod"><script language="Javascript" type="text/javascript">
+<!--
+var helpData = [];
+// mutualfunds: profile: profile
+
+// -->
+</script>
+
+
+		
+			<iframe name="topNavIframe" id="topNavIframe" class="private" width="100%" height="" src="/tdameritrade/grid/common/blank.asp" newsrc="https://invest.ameritrade.com/cgi-bin/apps/u/ResearchHeader?nav1=research&amp;nav2=mutualfunds&amp;title=Mutual Fund Profiles" scrolling="" frameborder="0" style="">
+			</iframe>
+			<script type="text/javascript">var topNavIframeSRC = "https://invest.ameritrade.com/cgi-bin/apps/u/ResearchHeader?nav1=research&nav2=mutualfunds&title=Mutual Fund Profiles"; </script>
+
+		
+	<div id="siteContainerPadding" class="private ">
+		<div id="siteContainer" pagesection="mutualfunds" pagename="profile" class="page-mutualfunds-profile page-mutualfunds-profile-profile">
+
+
+
+		
+	
+	<table id="top" border="0" cellspacing="0" class="stretchy pageHeader">
+	<tbody><tr>
+		<td style="vertical-align:bottom;" class="aM aL">
+		
+		<h1 class="hasLayout headerTitle">
+			<span class="fleft">Mutual Funds: Profile</span>
+				<a href="javascript:void(0);" class="fleft refreshIcon iconBackground" onclick="location.reload();">&nbsp;</a>
+		</h1>
+		
+		
+		</td>
+		
+		<td class="aM aR" style="vertical-align: bottom;">
+			
+		</td>
+		
+	</tr>
+	</tbody></table>
+	
+			<div id="timestampBar" class="smaller hasLayout">
+				<div class="fleft">Thursday, January 20, 2022 8:51:51 PM EST</div>
+				<div id="timestampBarRight" class="fright">
+					<a class="iconBackground" id="pageHelpLink" href="javascript:void(0)">Show&nbsp;Me</a>
+					<div class="headerHelpBarSpacer" id="pageHelpLinkSpacer">|</div>
+				</div>
+			</div>
+			
+
+
+		<table width="100%" id="content" cellspacing="0"><tbody><tr>
+	
+
+	<td id="left">
+
+
+<script type="text/javascript">
+
+function initSideMenu(){
+
+	if (typeof menuClass == "undefined" || typeof gLeftMenuObj != "undefined") return;
+
+	gLeftMenuObj = new menuClass("thirdNav");
+
+	var menuObj = gLeftMenuObj;
+
+	menuObj.defaults.setActiveItemStyles("#000000","#ffffff","none");
+	menuObj.defaults.setInactiveItemStyles("","","");
+	menuObj.defaults.setSubmenuIndent(9);
+	nav = [];
+
+
+	
+				nav["mutualfunds_overview"] = menuObj.addItem("Overview", buildAbsolutePath("mutualfunds/overview/overview.asp"), null);
+			
+			nav["mutualfunds_profile"] = menuObj.addItem("Profile", buildAbsolutePath("mutualfunds/profile/profile.asp"), null);
+			nav["mutualfunds_categories"] = menuObj.addItem("Categories", buildAbsolutePath("mutualfunds/categories/categories.asp"), null);
+			nav["mutualfunds_compare"] = menuObj.addItem("Compare Funds", buildAbsolutePath("mutualfunds/compare/compare.asp"), null);
+			
+				nav["mutualfunds_premierlist"] = menuObj.addItem("Premier List", buildAbsolutePath("mutualfunds/premierlist/premierlist.asp"), null);
+			
+			nav["mutualfunds_fundfamilies"] = menuObj.addItem("Families", buildAbsolutePath("mutualfunds/fundfamilies/fundfamilies.asp"), null);
+			nav["mutualfunds_commentary"] = menuObj.addItem("Commentary", buildAbsolutePath("mutualfunds/commentary/commentary.asp"), null);
+			nav["mutualfunds_screener"] = menuObj.addItem("Screener", buildAbsolutePath("screener/mutualfunds/overview.asp?fromSectionLeftNav=true"), null);
+			nav["mutualfunds_xray"] = menuObj.addItem("X-Ray", "https://invest.ameritrade.com/grid/p/site#r=jPage/https://morningstar.ameritrade.com/TDA/TDAPrivate.aspx?MP=XR&c_name=invest_VENDOR", null, null, true);
+
+		
+
+	try {
+		menuObj.activateItem(nav["mutualfunds_profile"]);
+	} catch(e) { //alert("No nav item mutualfunds_profile");
+	}
+
+	menuObj.writeMenu();
+}
+
+function getChildLevel(section) {
+
+	if (section == gPageSection) {
+		return 4;
+	}
+
+	return null;
+
+}
+
+loadBuffer.add(initSideMenu);
+
+</script>
+<div id="thirdNav" class="thirdNav "></div>
+<div style="width:135px !important">&nbsp;</div>
+
+
+
+
+</td>
+<td id="right">
+	
+	<table id="top" border="0" cellspacing="0" class="stretchy pageHeader">
+	<tbody><tr>
+		<td style="vertical-align:bottom;" class="aM aL">
+		
+		<h1 class="hasLayout headerTitle">
+			<span class="fleft"></span>
+				<a href="javascript:void(0);" class="fleft refreshIcon iconBackground" onclick="location.reload();">&nbsp;</a>
+		</h1>
+		
+		
+		</td>
+		
+		<td class="aM aR" style="vertical-align: bottom;">
+			
+		</td>
+		
+	</tr>
+	</tbody></table>
+	<div id="recentSymbols" class="hand"><table cellspacing="0"><tbody><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('SWPPX',false, 'stocks',false); return false"><td class="nowrap"><span>Schwab® S&amp;P 500 Index Fund</span></td><td class="symbol">SWPPX</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('AMRC',false, 'stocks',false); return false"><td class="nowrap"><span>Ameresco Inc</span></td><td class="symbol">AMRC</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('SDGA',false, 'stocks',false); return false"><td class="nowrap"><span>Impact Shares Sustainable Development Goals Global Equity ETF</span></td><td class="symbol">SDGA</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('FIW',false, 'stocks',false); return false"><td class="nowrap"><span>First Trust Water ETF</span></td><td class="symbol">FIW</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('ERTH',false, 'stocks',false); return false"><td class="nowrap"><span>Invesco MSCI Sustainable Future ETF</span></td><td class="symbol">ERTH</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('SUSA',false, 'stocks',false); return false"><td class="nowrap"><span>iShares MSCI USA ESG Select ETF</span></td><td class="symbol">SUSA</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('ESGV',false, 'stocks',false); return false"><td class="nowrap"><span>Vanguard ESG U.S. Stock ETF</span></td><td class="symbol">ESGV</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('ESG',false, 'stocks',false); return false"><td class="nowrap"><span>FlexShares STOXX US ESG Select Index Fund</span></td><td class="symbol">ESG</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('KRMA',false, 'stocks',false); return false"><td class="nowrap"><span>Global X Conscious Companies ETF</span></td><td class="symbol">KRMA</td></tr><tr onmouseover="highlightRecentSymbolsRow(this); return false" onmouseout="unhighlightRow(this); return false" onclick="selectSymbol('VEGN',false, 'stocks',false); return false"><td class="nowrap"><span>US Vegan Climate ETF</span></td><td class="symbol">VEGN</td></tr></tbody></table></div><div id="symbolHeaderContainer"><table id="symbolHeaderTable" class="stretchy" style="border-collapse:collapse;margin-bottom:4px;"><tbody><tr><td><h2 id="companyName" style="margin-top:0px;">Schwab® S&amp;P 500 Index Fund&nbsp;<span class="symbol">SWPPX</span><span class="iconBackground headerRefreshSpan" onclick="location.reload();">&nbsp;&nbsp;&nbsp;&nbsp;</span></h2><div id="classificationContainer"><span class="first">Schwab Funds</span><span>Large Blend</span></div></td><td><form id="symbolSearch" action="/grid/wwws/mutualfunds/profile/profile.asp?symbol=SWPPX" method="get" class="hasLayout"><div class="fright hasLayout"><div><span id="symbollabel">Change fund&nbsp;&nbsp;</span><a id="symbolLookup" style="margin:0;" href="/grid/wwws/symbolLookup/symbolLookup.asp?frompage=profile&amp;display=">Symbol lookup</a></div><div class="nowrap"><input defaulttext="SWPPX" smartfocus="yes" type="text" name="symbol" id="symbol" value="SWPPX" class="aM" style="position: relative; top: 1px;" autocomplete="off" "=""><input name="fromPage" type="hidden" value="profile"><input name="display" type="hidden" value=""><input name="fromSearch" type="hidden" value="true"><img src="/tdameritrade/grid/images/symbolDropdownArrow.png" class="icon marg3 hand" onclick="showRecentSymbols(event, document.getElementById('symbol')); return false" id="symbolDrop" style="margin-bottom: 0;"><input type="submit" value="Go" class="goSmall icon cursor" src="/grid/wwws/images/invisible.png"></div></div></form></td></tr><tr><td id="flagsContainer"><span><img src="/tdameritrade/grid/images/icons/fee-transparency-flags.svg#ntf-label" class="ftp-icon ntf-label-icon" alt="This fund has no transaction fee"></span><span><img src="/tdameritrade/grid/images/icons/fee-transparency-flags.svg#nl-label" class="ftp-icon nl-label-icon" alt="This is a no-load fund"></span><span><a title="View Prospectus" target="_new" href="/grid/wwws/common/prospectus/passthrough.asp?symbol=SWPPX" class="prospectusText">Prospectus</a></span></td></tr></tbody></table><div class="roundTop roundedModule"><b class="l1"></b><b class="l2"></b><b class="l3"></b><b class="l4"></b></div><div id="actionsContainer" class="hasLayout"><a id="symbolHeader_Buy" href="https://invest.ameritrade.com/cgi-bin/apps/u/ThirdPartyUrlLauncher/new?target=buyBttn&amp;param=SWPPX" tdbutton="green" style="margin-right:8px;" target="vendorLinks">Buy</a><a id="symbolHeader_Sell" href="https://invest.ameritrade.com/cgi-bin/apps/u/ThirdPartyUrlLauncher/new?target=sellBttn&amp;param=SWPPX" tdbutton="green" style="margin-right:20px;" target="vendorLinks">Sell</a><a class="actionLink" href="https://invest.ameritrade.com/cgi-bin/apps/u/ThirdPartyUrlLauncher/new?target=alerts&amp;param=SWPPX" target="vendorLinks">Set Alert</a><a href="#" class="actionLink" id="Header_initTDAWatchList" onclick="Common.initTDAWatchlistConnector({symbols:'SWPPX'}); return false;">Add to watch list</a></div><div class="roundBottom roundedModule"><b class="l4 rcmBottom"></b><b class="l3 rcmBottom"></b><b class="l2 rcmBottom"></b><b class="l1 rcmBottom"></b></div><div class="margBot10"></div><div id="quoteContainer" class="hasLayout"><div class="primaryQuote enhanceQuote"><div class="fLeft">$68.65&nbsp;</div><div class="iconBackground iconBackgroundNegative"></div>&nbsp;<span class="negative">0.76</span>&nbsp;<span style="color:#D31A1A">(1.09%)</span><span class="iconBackground headerRefreshSpan" onclick="location.reload();">&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="secondaryQuote wrapSecQuote">YTD Return <div class="dataPoint"><span class="positive">+28.66%</span></div><div class="timeStamp">As of December 31, 2021</div></div><div class="secondaryQuote">Net Assets<div class="dataPoint">$71B</div></div></div><div id="timeStamp">As of January 20, 2022 12:00am ET</div><script type="text/javascript" language="javascript"> loadBuffer.add(function() { Common.renderTDAMButtons("symbolHeaderContainer"); var firstLink = Element.parseSelector("#actionsContainer a", "symbolHeaderContainer", "first");  if(firstLink) { Element.addClass(firstLink, "noBorder");  if(!Element.hasClass( firstLink, "btnLink")) { Element.addClass( Element.get("actionsContainer"), "noBuySell" ); }}})</script></div>
+
+	<div style="position: relative; margin-bottom: 20px;" class="TabNavContainer">
+
+		<div id="TabNav">
+			<ul>
+
+				
+					<li class="current"><a href="profile.asp?symbol=SWPPX">Summary</a></li>
+				
+					<li class=""><a href="performanceBuffer.asp?symbol=SWPPX">Performance</a></li>
+				
+					<li class=""><a href="ratingsandriskBuffer.asp?symbol=SWPPX">Ratings &amp; Risk</a></li>
+				
+					<li class=""><a href="portfolioBuffer.asp?symbol=SWPPX">Portfolio</a></li>
+				
+					<li class=""><a href="feesandmanagementBuffer.asp?symbol=SWPPX">Fees &amp; Management</a></li>
+				
+			</ul>
+			<br style="clear:left;">
+		</div>
+
+		<div class="grid-printAllTabs" style="position: absolute; right: 0px; top: 0px;">
+			
+			<a class="iconbackground reportPDFLeft" href="/grid/wwws/common/cs.asp?path=TDAmeritrade\Reports\MutualFundBrief\report.cht&amp;symbol=SWPPX" onclick="pdf(this.href); return false;">Mutual Fund Brief</a>
+			<span class="padLeft10 padRight10 lighter">|</span>
+			
+			<a href="#" onclick="Funds.openPrintWindow('profile_print.asp?display=popup'); return false;">Print All Tabs</a>
+		</div>
+	</div>
+
+	<script>
+		Events.add( { element:Element.parseSelector( 'ul li!current a', 'TabNav' ), type:'mouseover', handler:Common.mouseOverTab, context:Common } );
+	</script>
+
+
+	<table cellspacing="0" class="stretchy" "=""><tbody><tr><td class="">
+	
+	<div class="moduleHeader" style="height: 15px;">
+		<div class="fleft">Growth of $10,000</div>
+		<div class="fright">As of 12/31/2021</div>
+	</div>
+	
+	<script type="text/javascript">
+		loadBuffer.add(function() { OverviewChart.init({timeframe: "5yr"}) });
+	</script>
+	
+	<div>
+		<table id="growthOf10K" class="stretchy" style="border:10px solid white;">
+		<tbody><tr>
+		<td class="leftChart">
+			<div>
+				<div id="timeframe_controls">
+					
+					<span id="help2">
+						<a id="ch_1yr" class="stocks_charttimeframe" href="javascript:void(0)" onclick="OverviewChart.switchChart('1yr'); return false">1 Year</a>
+						| <a id="ch_3yr" class="stocks_charttimeframe" href="javascript:void(0)" onclick="OverviewChart.switchChart('3yr'); return false">3 Year</a>
+						| <a id="ch_5yr" class="stocks_charttimeframe active" href="javascript:void(0)" onclick="OverviewChart.switchChart('5yr'); return false">5 Year</a>
+	
+					</span>
+					
+				</div>
+				<img newsrc="/grid/wwws/tools/charts/buffers/getGrowthOf10kChart.asp?width=372&amp;height=200&amp;type=MF&amp;symbol=SWPPX&amp;timeframe=1825&amp;style=mountain" src="/tdameritrade/grid/images/x.gif" id="chart" class="fullWidth" height="200">
+				<div id="chartError" class="none growth10k"><div>The chart is currently unavailable.</div></div>
+				<div class="overviewCheckboxes">
+					<span id="help1">
+						<strong>Comparison:</strong> <img src="/tdameritrade/grid/images/buttons/chCheck0_on.gif" id="currentCompare" class="button"> <span class="tickerSymbol">SWPPX</span>
+						
+						<a href="javascript:void(0)" onclick="OverviewChart.compareChart('US;SPX', 'SP500'); return false"><img src="/tdameritrade/grid/images/buttons/chCheck2_off.gif" id="SP500" class="button"> S&amp;P 500</a>
+					</span>
+	
+				</div>
+		</div>
+		</td>
+		
+		<td class="rightControls">
+
+			<div class="bold margTop5" deftitle="Gross Expense Ratio" deftext="The gross expense ratio is the fund's total annual operating expense ratio. It is gross of any fee waivers or expense reimbursements.">Gross Expense Ratio</div>
+			<span class="">0.02%**</span>
+			
+			<div class="bold margTop5" deftitle="Net Expense Ratio" deftext="The net expense ratio is the expense ratio of the fund after applicable expense waivers or reimbursements. This is the actual expense ratio that investors paid during the fund’s most recent fiscal year. The net expense ratio may be contractual or temporary and may change at the fund's discretion.  Please refer to the fund prospectus for this information.">Net Expense Ratio</div>
+			<span class="">0.02%**</span>
+			
+			<div class="bold margTop5">Total Assets</div>
+			<span class="">$71B</span>
+	
+			<div class="bold margTop5">SEC 30 Day Yield</div>
+			<span class="">--</span>
+			
+			<div class="bold margTop5">Distribution Yield (TTM)</div>
+			<span class="">1.17%</span>
+	
+			<div class="bold margTop5">Fund Inception</div>
+			<span class="">05/19/1997</span>
+			
+			<div class="bold margTop5">
+				<a id="historicalLink" href="javascript:void(0)" class="iconBackground tearAwayRight">Historical Quotes</a>
+			</div>
+	
+		</td>
+		</tr>
+		</tbody></table>
+	
+	</div>
+	
+	
+	<div class="margTop15">
+		<div class="bold">About this Mutual Fund</div>
+		The investment seeks to track the total return of the S&amp;P 500® Index.The fund generally invests at least 80% of its net assets (including, for this purpose, any borrowings for investment purposes) in these stocks; typically, the actual percentage is considerably higher. It generally will seek to replicate the performance of the index by giving the same weight to a given stock as the index does.
+	</div>
+	<div class="note padTop10">
+		<p>
+			The chart above represents the growth of a hypothetical investment of $10,000. The 
+			total return is not adjusted to reflect sales charges or taxes, however it does show 
+			actual ongoing fund expenses and assumes the reinvestment of dividends and capital 
+			gains. If the returns were adjusted to include sales charges, the quoted performance 
+			would be lower.
+		</p>
+	</div>
+
+<div id="module-trailingTotalReturns">	
+	<div class="moduleHeader margTop15" style="height: 15px;">
+		<div class="fleft">Trailing Total Returns</div>
+		<div class="fright">As of 12/31/2021</div>
+	</div>
+	
+	<table id="table-trailingTotalReturnsTable" class="vertical dataBackground stretchy">
+	
+		<colgroup><col style="width:25%">
+		
+		<col style="width:25%">
+		
+		<col style="width:25%">
+		
+		<col style="width:25%">
+		
+	</colgroup><thead class="sortable ">
+	<tr>
+	
+			<th class="alignLeft alignBottom"></th>
+			
+			<th class=" alignRight alignBottom">Total</th>
+			
+			<th class=" alignRight alignBottom">S&amp;P 500 TR</th>
+			
+			<th class=" alignRight alignBottom">Large Blend</th>
+			
+	</tr>
+	</thead>
+	<tbody>
+	
+		<tr class="">
+		
+			<td class="alignLeft">1-Month</td>
+			
+			<td class=" alignRight"><span class="positive">+4.48%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+4.48%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+4.52%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">3-Month</td>
+			
+			<td class=" alignRight"><span class="positive">+11.01%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+11.03%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+9.47%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">Year-to-date</td>
+			
+			<td class=" alignRight"><span class="positive">+28.66%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+28.71%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+26.07%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">1-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+28.66%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+28.71%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+26.07%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">3-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+26.04%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+26.07%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+23.83%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">5-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+18.44%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+18.47%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+16.57%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">10-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+16.48%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+16.55%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+14.96%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">Since Inception</td>
+			
+			<td class=" alignRight"><span class="positive">+9.27%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+11.25%</span></td>
+			
+			<td class=" alignRight">--</td>
+			
+		</tr>
+		
+	</tbody>
+	
+	</table>
+	
+	<div class="note padLeft10">Inception Date: May 19, 1997</div>
+	
+	<a class="fright normal margTop5 margBot5 smaller" href="performanceBuffer.asp">Performance Details</a>
+	<br class="clear">
+	
+	<div class="note margTop10 padLeft10">
+		<p>
+			Total return reflects performance without adjusting for sales charges or the effects 
+			of taxation, but is adjusted to reflect all actual ongoing fund expenses and assumes 
+			reinvestment of dividends and capital gains. If adjusted, sales charges would reduce 
+			the performance quoted.
+		</p>
+		<p>
+			</p><div class="margTop10 margBot15">The performance quoted represents past performance, is no guarantee of future results and may not provide an adequate basis for evaluating the performance of the product over varying market conditions or economic cycles. Current performance may be lower or higher than the performance data quoted. The investment return and principal value of an investment will fluctuate so that an investor's shares, when redeemed, may be worth more or less than their original cost.</div>
+		<p></p>
+	</div>
+</div>
+	
+
+<div id="module-standardizedReturns">
+	<div class="moduleHeader margTop15 hasLayout">
+		Standardized Returns
+	</div>
+	
+	<table id="table-standardizedReturnsTable" class="vertical dataBackground stretchy">
+	
+		<colgroup><col>
+		
+		<col>
+		
+		<col>
+		
+	</colgroup><thead class="sortable ">
+	<tr>
+	
+			<th class="alignLeft alignBottom"></th>
+			
+			<th class=" alignRight alignBottom">Standardized Return %<br>(as of 12/31/2021)</th>
+			
+			<th class=" alignRight alignBottom">Standardized Return %<br>(as of 12/31/2021)</th>
+			
+	</tr>
+	</thead>
+	<tbody>
+	
+		<tr class="">
+		
+			<td class="alignLeft">1-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+28.66%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+28.66%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">5-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+18.44%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+18.44%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">10-Year</td>
+			
+			<td class=" alignRight"><span class="positive">+16.48%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+16.48%</span></td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft">Since Inception</td>
+			
+			<td class=" alignRight"><span class="positive">+9.27%</span></td>
+			
+			<td class=" alignRight"><span class="positive">+9.27%</span></td>
+			
+		</tr>
+		
+	</tbody>
+	
+	</table>
+	
+	<div class="note padLeft10 padBot5">Inception Date: May 19, 1997</div>
+
+	
+
+	<div class="note margTop5 padLeft10">
+		<p>
+			Standardized Total Return is total return adjusted for sales charges.
+		</p>
+		<p>
+			</p><div class="margTop10 margBot15">The performance quoted represents past performance, is no guarantee of future results and may not provide an adequate basis for evaluating the performance of the product over varying market conditions or economic cycles. Current performance may be lower or higher than the performance data quoted. The investment return and principal value of an investment will fluctuate so that an investor's shares, when redeemed, may be worth more or less than their original cost.</div>
+		<p></p>
+	</div>
+	
+</div>
+	
+	<table id="grid-portfolioDetails">
+	<tbody><tr>
+	<td id="module-sectorBreakdown" style="width:50%">
+		<div class="moduleHeader margTop15 hasLayout">
+			Sector Breakdown
+			<div class="fright">As of 12/31/2021</div>
+		</div>
+		
+	<table id="table-sectorBreakDownTable" class="vertical dataBackground stretchy">
+	
+		<colgroup><col>
+		
+		<col>
+		</colgroup><tbody>
+	
+		<tr class=" highlight">
+		
+			<td class="left">Cyclical</td>
+			
+			<td class=" alignRight">30.24%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Basic Materials</td>
+			
+			<td class=" alignRight">2.27%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Consumer Cyclical</td>
+			
+			<td class=" alignRight">12.29%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Financial Services</td>
+			
+			<td class=" alignRight">12.91%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Real Estate</td>
+			
+			<td class=" alignRight">2.77%</td>
+			
+		</tr>
+		
+		<tr class=" highlight">
+		
+			<td class="left">Defensive</td>
+			
+			<td class=" alignRight">22.18%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Consumer Defensive</td>
+			
+			<td class=" alignRight">6.30%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Healthcare</td>
+			
+			<td class=" alignRight">13.38%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Utilities</td>
+			
+			<td class=" alignRight">2.50%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Communication Services</td>
+			
+			<td class=" alignRight">10.16%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Energy</td>
+			
+			<td class=" alignRight">2.67%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Industrials</td>
+			
+			<td class=" alignRight">8.13%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Sensitive</td>
+			
+			<td class=" alignRight">8.13%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Sensitive</td>
+			
+			<td class=" alignRight">39.46%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="left extraIndent">Technology</td>
+			
+			<td class=" alignRight">26.63%</td>
+			
+		</tr>
+		
+	</tbody>
+	
+	</table>
+	
+		<a class="fright normal margTop5 smaller" href="portfolioBuffer.asp">Portfolio Details</a>
+		
+	</td>
+	
+	<td id="module-topHoldings" style="width:50%; padding-left:10px;">
+		<div class="moduleHeader margTop15 hasLayout">
+			Top 10 Holdings
+			<div class="fright">As of 12/31/2021</div>
+		</div>
+		
+	<table id="table-top10HoldingsTable" class="vertical dataBackground stretchy">
+	
+		<colgroup><col>
+		
+		<col>
+		
+		<col>
+		
+	</colgroup><thead class="sortable ">
+	<tr>
+	
+			<th class="alignLeft alignBottom">Company</th>
+			
+			<th class=" alignRight alignBottom">YTD Return<br><span class="nowrap">(as of 01/20/2022)</span></th>
+			
+			<th class=" alignRight alignBottom">% of Assets</th>
+			
+	</tr>
+	</thead>
+	<tbody>
+	
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=AAPL" symbol="AAPL">Apple Inc</a></td>
+			
+			<td class=" alignRight"><span class="negative">-7.35%</span></td>
+			
+			<td class=" alignRight">6.78%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=MSFT" symbol="MSFT">Microsoft Corp</a></td>
+			
+			<td class=" alignRight"><span class="negative">-10.32%</span></td>
+			
+			<td class=" alignRight">6.19%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=AMZN" symbol="AMZN">Amazon.com Inc</a></td>
+			
+			<td class=" alignRight"><span class="negative">-9.03%</span></td>
+			
+			<td class=" alignRight">3.57%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=GOOGL" symbol="GOOGL">Alphabet Inc Class A</a></td>
+			
+			<td class=" alignRight"><span class="negative">-7.97%</span></td>
+			
+			<td class=" alignRight">2.14%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=TSLA" symbol="TSLA">Tesla Inc</a></td>
+			
+			<td class=" alignRight"><span class="negative">-5.73%</span></td>
+			
+			<td class=" alignRight">2.11%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=GOOG" symbol="GOOG">Alphabet Inc Class C</a></td>
+			
+			<td class=" alignRight"><span class="negative">-7.72%</span></td>
+			
+			<td class=" alignRight">1.98%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=FB" symbol="FB">Meta Platforms Inc Class A</a></td>
+			
+			<td class=" alignRight"><span class="negative">-5.88%</span></td>
+			
+			<td class=" alignRight">1.95%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=NVDA" symbol="NVDA">NVIDIA Corp</a></td>
+			
+			<td class=" alignRight"><span class="negative">-17.89%</span></td>
+			
+			<td class=" alignRight">1.80%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=BRK.B" symbol="BRK.B">Berkshire Hathaway Inc Class B</a></td>
+			
+			<td class=" alignRight"><span class="positive">+4.02%</span></td>
+			
+			<td class=" alignRight">1.34%</td>
+			
+		</tr>
+		
+		<tr class="">
+		
+			<td class="alignLeft"><a href="../profile/profile.asp?symbol=UNH" symbol="UNH">UnitedHealth Group Inc</a></td>
+			
+			<td class=" alignRight"><span class="negative">-7.79%</span></td>
+			
+			<td class=" alignRight">1.16%</td>
+			
+		</tr>
+		
+	</tbody>
+	
+	</table>
+	
+		<div class="note padLeft10">* represents an International company or one without a recognizable symbol.</div>
+		<a class="fright normal margTop5 smaller" href="portfolioBuffer.asp">Portfolio Details</a>
+		
+	</td>
+	</tr>
+	</tbody></table>
+
+	
+	
+	</td><td class="sidebar">
+	<style>
+	
+	
+	
+	</style>
+<div id="module-morningStarWrapUp">
+	<div class="moduleHeader secondary">Morningstar Wrap-Up</div>
+	<div class="moduleBox smaller">
+	<div class="msStyleHeader">Morningstar Style Box</div>
+	
+	
+
+	<div class="printOnly">Large Blend</div>
+	<div class="msStyleBoxContainer" style="margin-bottom:8px;">
+		
+		
+		<div class="msStyleBoxTable">
+		
+	
+		<div type="morningstar" style="display:block;">
+			<div class="msStyleBoxRow">
+				<div class="msStyleBoxLabel top" style="text-align:center">Value</div>
+				<div class="msStyleBoxLabel top" style="text-align:center">Blend</div>
+				<div class="msStyleBoxLabel top" style="text-align:center">Growth</div>
+				<div></div>
+			</div>
+			<div class="msStyleBoxRow selected-row">
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox selected">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBoxLabel right">Large</div>
+			</div>
+			<div class="msStyleBoxRow ">
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBoxLabel right">Medium</div>
+			</div>
+			<div class="msStyleBoxRow ">
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBoxLabel right">Small</div>
+			</div>
+		</div>
+		
+		
+		<div type="bond" style="display:none;">
+			<div class="msStyleBoxRow">
+				<div class="msStyleBoxLabel top" style="text-align:center">Short</div>
+				<div class="msStyleBoxLabel top" style="text-align:center">Interm</div>
+				<div class="msStyleBoxLabel top" style="text-align:center">Long</div>
+				<div></div>
+			</div>
+			<div class="msStyleBoxRow ">
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBoxLabel right">High</div>
+			</div>
+			<div class="msStyleBoxRow ">
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBoxLabel right">Medium</div>
+			</div>
+			<div class="msStyleBoxRow ">
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBox ">&nbsp;</div>
+				<div class="msStyleBoxLabel right">Low</div>
+			</div>
+		</div>
+		
+		
+
+		</div>
+
+	</div>
+
+	
+	
+	<p class="msStyleDate" style="margin:0 0 24px 0">As of 12/31/2021</p>
+	
+	<div class="msStyleRatingBoxHeader">Risk: <span class="normal ">Average</span>
+	
+
+	<div class="msStyleBoxContainer">
+	<table cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td class="msStyleBox riskreturn ">&nbsp;</td>
+			<td class="msStyleBox riskreturn ">&nbsp;</td>
+			<td class="msStyleBox riskreturn riskreturn-blue">&nbsp;</td>
+			<td class="msStyleBox riskreturn ">&nbsp;</td>
+			<td class="msStyleBox riskreturn last ">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3" class="riskreturn-label">Low</td><td colspan="2" class="riskreturn-label riskreturn-label-high">High</td>
+		</tr>
+	</tbody>
+	</table>
+	</div>
+
+	
+	</div>
+	<!--span had 'lighter' class -->
+	<div class="msStyleRatingBoxHeader">Return: <span class="normal ">Above Average</span>
+	
+
+	<div class="msStyleBoxContainer">
+	<table cellpadding="0" cellspacing="0">
+	<tbody>
+		<tr>
+			<td class="msStyleBox riskreturn ">&nbsp;</td>
+			<td class="msStyleBox riskreturn ">&nbsp;</td>
+			<td class="msStyleBox riskreturn ">&nbsp;</td>
+			<td class="msStyleBox riskreturn riskreturn-blue">&nbsp;</td>
+			<td class="msStyleBox riskreturn last ">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3" class="riskreturn-label">Low</td><td colspan="2" class="riskreturn-label riskreturn-label-high">High</td>
+		</tr>
+	</tbody>
+	</table>
+	</div>
+
+	
+	
+	</div>
+	
+	
+		<p style="margin:10px 0 5px;"><a id="tearAway" class="tearAwayRight iconBackground msStylePopupLink" style="font-weight:normal" href="#" onclick="Common.openInfoPopup('/mutualfunds/profile/dataDefinitions.asp'); return false;">What's This?</a></p>
+		
+	
+	<p class="msStyleDate">As of 12/31/2021</p>
+	
+	</div> 
+</div>
+<!-- End Morningstar Wrap-Up box -->
+
+<div id="module-reportsRatings margBot0">
+	<div class="moduleHeader secondary">Reports and Ratings</div>
+	
+
+	<div class="moduleIndent smaller rating-box-container">				
+		<div class="ReportsRatings-titlewrap hasLayout">
+			<div class="ReportsRatings-title rating-box-header-title">Morningstar<div>Rating since 12/31/21</div></div>
+		</div>				
+		<span class="mStarRatingsWrapper">
+			<div class="rating-box" mstarhoversymbol="SWPPX">
+				
+							<div class="">
+								<div class="star-container"><div class="hidden-text">5</div><div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div></div>
+							</div>
+						
+							<div class="selected-cell">
+								<div class="star-container"><div class="hidden-text">4</div><div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div></div>
+							</div>
+						
+							<div class="">
+								<div class="star-container"><div class="hidden-text">3</div><div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div></div>
+							</div>
+						
+							<div class="">
+								<div class="star-container"><div class="hidden-text">2</div><div class="rating-star"></div><div class="rating-star"></div></div>
+							</div>
+						
+							<div class="">
+								<div class="star-container"><div class="hidden-text">1</div><div class="rating-star"></div></div>
+							</div>
+						
+			</div>
+		</span>			
+		<div class="morning-star-hover-label">Mouseover stars to see Morningstar Rating detail.</div>				
+		</div></div></td></tr></tbody></table></td></tr></tbody></table></div></div></body></html>

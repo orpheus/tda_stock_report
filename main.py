@@ -27,7 +27,8 @@ tickers = [
     'ERTH',
     'FIW',
     'SDGA',
-    'AMRC'
+    'AMRC',
+    'SWPPX'
 ]
 
 chromedriver_path = './bin/chromedriver'
@@ -125,6 +126,8 @@ def fetch_ticker_data(ticker):
 
     driver.switch_to.frame('main')
 
+    # ----------- implement code below -------------
+
     # ticker_frame_loaded = False
     # while ticker_frame_loaded is False:
         # check stock frame for ticker text
@@ -139,8 +142,7 @@ def fetch_ticker_data(ticker):
         # ticker_data_map[ticker] = ticker_data
         # return
 
-    # remove code below
-        
+    # ----------- remove code below -------------
 
     global first_load
     wait_time = 3 if first_load else 1
@@ -159,14 +161,11 @@ def fetch_ticker_data(ticker):
 
     html = driver.page_source
 
-    # soup = bs4(html, "lxml")
     with open('ticker_data/{}.html'.format(ticker), 'w') as out_file:
         out_file.write(html)
         print('Wrote {} frame html to file'.format(ticker))
-        # toDo: write the correct html to static pages and use BS4 on
-        # static files to get the logic correct and then import that
-        # logic back here to grab all the necessary data
 
+ # ----------- remove code above -------------
 
 def generate_report():
     print("Generating report..")
