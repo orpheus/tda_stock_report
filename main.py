@@ -11,6 +11,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
+from soup import extract_etf_data_from_file, extract_ticker_data_from_html
+
 
 tickers = [
     'DSI',
@@ -122,17 +124,49 @@ def fetch_ticker_data(ticker):
         WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.ID, 'main')))
     except TimeoutException:
         print('Page timed out waiting for main iframe to load.')
-        return 1
+        return None
 
     driver.switch_to.frame('main')
 
     # ----------- implement code below -------------
 
-    # ticker_frame_loaded = False
-    # while ticker_frame_loaded is False:
-        # check stock frame for ticker text
-        # check etf frame for ticker text
-        # sleep(0.1)
+    def did_ticker_load(xpath, for_):
+        try:
+            stock_ticker_elem = driver.find_element(By.XPATH, xpath)
+            ticker_text = stock_ticker_elem.get_attribute('innerText')
+            if ticker_text == ticker:
+                return True
+        except:
+            return False
+
+    count = 0 # ~30sec timeout
+    while count < 30:
+        stock_frame = did_ticker_load("//span[@class='exchange']/span[@class='symbol']", for_="stock frame")
+        etf_mf_frame = did_ticker_load("//h2[@id='companyName']/span[@class='symbol']", for_="etf/mf frame")
+        
+        print(stock_frame, etf_mf_frame)
+        if stock_frame or etf_mf_frame:
+            profile_title = driver.find_element(By.XPATH, '/html/head/title').get_attribute('innerText')
+
+            if profile_title == 'Mutual Fund Profiles':
+                return extract_ticker_data_from_html('MF', driver.page_source)
+
+            if profile_title == 'Stock Summary':
+                return extract_ticker_data_from_html('STOCK', driver.page_source)
+
+            if profile_title == 'ETF Profile':
+                return extract_ticker_data_from_html('ETF', driver.page_source)
+            
+            print("ERROR :: Unknown profile_title :: {}".format(profile_title))
+
+        count += 1
+        print('Loading stock frame...')
+        sleep(1)
+
+    if count > 30:
+        print("ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker))
+        return None, "ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker)
+
     
     # determine asset type via frame title or other means
 
@@ -144,35 +178,37 @@ def fetch_ticker_data(ticker):
 
     # ----------- remove code below -------------
 
-    global first_load
-    wait_time = 3 if first_load else 1
+    # global first_load
+    # wait_time = 3 if first_load else 1
 
-    stock_frame = wait_until(EC.presence_of_element_located((By.ID, 'layout-header')), timeout=wait_time)
-    # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
-    etf_frame = wait_until(EC.presence_of_element_located((By.ID, 'companyName')), timeout=wait_time)
-    # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
-    # bond_frame etc
+    # stock_frame = wait_until(EC.presence_of_element_located((By.ID, 'layout-header')), timeout=wait_time)
+    # # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
+    # etf_frame = wait_until(EC.presence_of_element_located((By.ID, 'companyName')), timeout=wait_time)
+    # # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
+    # # bond_frame etc
 
-    if stock_frame is not None and etf_frame is not None:
-        print("Could not find Stock or ETF frame")
-        return 1
+    # if stock_frame is not None and etf_frame is not None:
+    #     return None, "Could not find Stock or ETF frame"
 
-    first_load = False
+    # first_load = False
 
-    html = driver.page_source
+    # html = driver.page_source
 
-    with open('ticker_data/{}.html'.format(ticker), 'w') as out_file:
-        out_file.write(html)
-        print('Wrote {} frame html to file'.format(ticker))
+    # with open('ticker_data/{}.html'.format(ticker), 'w') as out_file:
+    #     out_file.write(html)
+    #     print('Wrote {} frame html to file'.format(ticker))
 
  # ----------- remove code above -------------
 
 def generate_report():
     print("Generating report..")
+    report_map = {}
     for ticker in tickers:
-        ret = fetch_ticker_data(ticker)
-        if ret != None:
-            return 1
+        data = fetch_ticker_data(ticker)
+        if data is None:
+            return
+        print(data)
+        print('\n')
 
 
 def run():

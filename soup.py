@@ -2,10 +2,14 @@ from re import S
 from bs4 import BeautifulSoup as bs4
 
 def extract_ticker_data_from_html(asset_type, html):
-    print("Switch on asset type (stock, etf, bond, etc")
-    # extract_stock_data
-    # extract_etf_data
-    # etc
+    if asset_type == 'STOCK':
+        return extract_stock_data(html)
+    
+    if asset_type == 'MF':
+        return extract_mutual_fund_data(html)
+
+    if asset_type == 'ETF':
+        return extract_etf_data(html)
 
 
 def extract_etf_data_from_file(html_file_path="ticker_data/DSI.html"):
@@ -179,6 +183,6 @@ def extract_stock_data(html):
     return ticker_data
 
 if __name__ == '__main__':
-    print(extract_stock_data_from_file())
-    print(extract_mutual_fund_data_from_file())
+    # print(extract_stock_data_from_file())
+    # print(extract_mutual_fund_data_from_file())
     print(extract_etf_data_from_file())
