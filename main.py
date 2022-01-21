@@ -107,10 +107,6 @@ def wait_until(EC=None, timeout_msg=None, timeout=10):
         return 1
 
 
-# Use to increase the wait time of the first ticker search
-first_load=True
-
-
 def fetch_ticker_data(ticker):
     driver.switch_to.default_content()
 
@@ -128,12 +124,11 @@ def fetch_ticker_data(ticker):
 
     driver.switch_to.frame('main')
 
-    # ----------- implement code below -------------
-
-    def did_ticker_load(xpath, for_):
+    def did_ticker_load(xpath):
         try:
             stock_ticker_elem = driver.find_element(By.XPATH, xpath)
             ticker_text = stock_ticker_elem.get_attribute('innerText')
+            print("Ticker Text: {} == {}".format(ticker, ticker_text))
             if ticker_text == ticker:
                 return True
         except:
@@ -141,10 +136,9 @@ def fetch_ticker_data(ticker):
 
     count = 0 # ~30sec timeout
     while count < 30:
-        stock_frame = did_ticker_load("//span[@class='exchange']/span[@class='symbol']", for_="stock frame")
-        etf_mf_frame = did_ticker_load("//h2[@id='companyName']/span[@class='symbol']", for_="etf/mf frame")
+        stock_frame = did_ticker_load("//span[@class='exchange']/span[@class='symbol']")
+        etf_mf_frame = did_ticker_load("//h2[@id='companyName']/span[@class='symbol']")
         
-        print(stock_frame, etf_mf_frame)
         if stock_frame or etf_mf_frame:
             profile_title = driver.find_element(By.XPATH, '/html/head/title').get_attribute('innerText')
 
@@ -167,30 +161,7 @@ def fetch_ticker_data(ticker):
         print("ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker))
         return None, "ERROR :: {} :: Failed to find ticker in frame during frame load".format(ticker)
 
-    
-    # determine asset type via frame title or other means
-
-    # switch on asset type and extract data
-        # ticker_data = extract_ticker_data_from_html(<asset_type>, driver.page_source)
-        # global ticker_data_map
-        # ticker_data_map[ticker] = ticker_data
-        # return
-
-    # ----------- remove code below -------------
-
-    # global first_load
-    # wait_time = 3 if first_load else 1
-
-    # stock_frame = wait_until(EC.presence_of_element_located((By.ID, 'layout-header')), timeout=wait_time)
-    # # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
-    # etf_frame = wait_until(EC.presence_of_element_located((By.ID, 'companyName')), timeout=wait_time)
-    # # if not 1 (err), then wait until ticker is located __somewhere__ then skip the rest
-    # # bond_frame etc
-
-    # if stock_frame is not None and etf_frame is not None:
-    #     return None, "Could not find Stock or ETF frame"
-
-    # first_load = False
+    # ----------- write to file -------------
 
     # html = driver.page_source
 
@@ -198,7 +169,7 @@ def fetch_ticker_data(ticker):
     #     out_file.write(html)
     #     print('Wrote {} frame html to file'.format(ticker))
 
- # ----------- remove code above -------------
+    # ----------- write to file -------------
 
 def generate_report():
     print("Generating report..")
@@ -207,15 +178,23 @@ def generate_report():
         data = fetch_ticker_data(ticker)
         if data is None:
             return
-        print(data)
-        print('\n')
+        data['ticker'] = ticker
+        report_map[ticker] = data
+    print("Report map generated")
+    return report_map
 
+
+def write_report_to_sheet(report_map):
+    print(report_map)
 
 def run():
     print("Starting..")
     open_tdameritrade()
     login()
-    generate_report()
+    report_map = generate_report()
+    if report_map is None:
+        return
+    write_report_to_sheet(report_map)
 
 
 if __name__ == '__main__':
