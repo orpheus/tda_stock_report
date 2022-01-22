@@ -1,4 +1,7 @@
+import csv
+import json
 from os import environ
+from pydoc import describe
 from time import sleep, time
 
 from bs4 import BeautifulSoup as bs4
@@ -13,7 +16,6 @@ from selenium.common.exceptions import TimeoutException
 
 from soup import extract_ticker_data_from_html
 from portfolios import portfolios
-
 
 chromedriver_path = './bin/chromedriver'
 service = Service(executable=chromedriver_path)
@@ -160,8 +162,9 @@ def fetch_ticker_data(ticker):
 ticker_cache = {}
 
 
+# Returns - {[ticker]: [data], ...}
 def generate_report(tickers):
-    print("Generating report..")
+    print("Generating portfolio report..")
     report_map = {}
     for ticker in tickers:
         if ticker in ticker_cache:
@@ -169,34 +172,170 @@ def generate_report(tickers):
         else:
             data = fetch_ticker_data(ticker)
             data['ticker'] = ticker
+            data['link'] = driver.current_url
 
             ticker_cache[ticker] = data
             report_map[ticker] = data
 
-    print("Report map generated")
+    print("Portfolio report generated")
     return report_map
 
 
+# Returns - {[investor]: [portfolio_report]}
 def generate_portfolio_report(portfolios):
     portfolio_report = {}
     for investor in portfolios:
+        print("Generating portfolio report for: {}".format(investor))
         report_map = generate_report(portfolios[investor])
         portfolio_report[investor] = report_map
     
     return portfolio_report
 
 
-def write_report_to_sheet(report_map):
-    print(report_map)
+def ticker_data_to_row(ticker_data):
+    ticker = ticker_data.get('ticker')
+    profile = ticker_data.get('profile')
+    company_name = ticker_data.get('company_name')
+    current_price = ticker_data.get('current_price')
+    market_cap = ticker_data.get('market_cap')
+    avg_vol_ten_day = ticker_data.get('avg_vol_ten_day')
+    eps = ticker_data.get('eps')
+    p_e_ratio = ticker_data.get('p_e_ratio')
+    ann_dividend_over_yield = ticker_data.get('ann_dividend_over_yield')
+    percent_held_by_institutions = ticker_data.get('percent_held_by_institutions')
+
+    link = ticker_data.get('link')
+    prospectus_link = ticker_data.get('prospectus_link')
+    gross_expense_ratio = ticker_data.get('gross_expense_ratio')
+    net_expense_ratio = ticker_data.get('net_expense_ratio')
+    total_assets = ticker_data.get('total_assets')
+    distribution_yield = ticker_data.get('distribution_yield')
+    fund_inception = ticker_data.get('fund_inception')
+    ex_dividend_date = ticker_data.get('ex_dividend_date')
+    description = ticker_data.get('description')
+    description = description.strip() if description is not None else None
+
+    market_returns = ticker_data.get('market_returns') or {'market_return': None, 'nav_return': None}
+    
+    mr_one_month = market_returns.get('one_month')
+    mr_one_month = mr_one_month.get('market_return') if mr_one_month is not None else None
+
+    mr_three_month = market_returns.get('three_month')
+    mr_three_month = mr_three_month.get('market_return') if mr_three_month is not None else None
+
+    mr_six_month = market_returns.get('six_month')
+    mr_six_month = mr_six_month.get('market_return') if mr_six_month is not None else None
+
+    mr_year_to_date = market_returns.get('year_to_date')
+    mr_year_to_date = mr_year_to_date.get('market_return') if mr_year_to_date is not None else None
+
+    mr_year = market_returns.get('year')
+    mr_year = mr_year.get('market_return') if mr_year is not None else None
+
+    mr_three_year = market_returns.get('three_year')
+    mr_three_year = mr_three_year.get('market_return') if mr_three_year is not None else None
+
+    mr_five_year = market_returns.get('five_year')
+    mr_five_year = mr_five_year.get('market_return') if mr_five_year is not None else None
+
+    mr_ten_year = market_returns.get('ten_year')
+    mr_ten_year = mr_ten_year.get('market_return') if mr_ten_year is not None else None
+
+    mr_inception = market_returns.get('inception')
+    mr_inception = mr_inception.get('market_return') if mr_inception is not None else None
+
+    return [
+        company_name,
+        ticker,
+        profile,
+        gross_expense_ratio,
+        net_expense_ratio,
+        total_assets,
+        ann_dividend_over_yield,
+        distribution_yield,
+        fund_inception,
+        mr_one_month,
+        mr_three_month,
+        mr_six_month,
+        mr_year_to_date,
+        mr_year,
+        mr_three_year,
+        mr_five_year,
+        mr_ten_year,
+        mr_inception,
+        current_price,
+        eps,
+        p_e_ratio,
+        market_cap,
+        link,
+        prospectus_link,
+        description
+    ]
+
+
+header_row = [
+    'Company Name',
+    'Ticker',
+    'Type',
+    'Gross Exp Ratio',
+    'Net Exp Ratio',
+    'Total Assets',
+    'Ann Dividend/Yield',
+    'Distribution Yield',
+    'Fund Inception',
+    '1m MR',
+    '3m MR',
+    '6m MR',
+    'YTD MR',
+    '1yr MR',
+    '3yr MR',
+    '5yr MR',
+    '10yr MR',
+    'Inception MR',
+    'Cur Price',
+    'EPS',
+    'P/E Ratio',
+    'Market Cap',
+    'Link',
+    'Prospectus',
+    'Description'
+]
+
+
+def write_portfolios_to_csv(portfolio_report):
+    with open('portfolios.csv', 'w', newline='') as f:
+        writer = csv.writer(f, delimiter=',')
+        writer.writerow(header_row)
+        for investor in portfolio_report:
+            portfolio = portfolio_report[investor]
+            writer.writerow([])
+            writer.writerow([investor])
+
+            for ticker in portfolio:
+                writer.writerow(ticker_data_to_row(portfolio[ticker]))
+
+
+def write_from_json_dump():
+    with open('portfolio_report_dump.json', 'r') as data:
+        portfolio_report = json.load(data)
+        write_portfolios_to_csv(portfolio_report)
 
 def run():
     print("Starting..")
     open_tdameritrade()
     login()
+
     portfolio_report = generate_portfolio_report(portfolios)
-    write_report_to_sheet(portfolio_report)
+
+    # Save the json to a file to have for reference and in case of error
+    with open('portfolio_report_dump.json', 'w') as f:
+         f.write(json.dumps(portfolio_report))
+        
+    write_portfolios_to_csv(portfolio_report)
+
     print("Done.")
 
 
 if __name__ == '__main__':
     run()
+    # write_from_json_dump()

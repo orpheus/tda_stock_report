@@ -1,4 +1,4 @@
-from re import S
+import re
 from bs4 import BeautifulSoup as bs4
 
 def extract_ticker_data_from_html(asset_type, html):
@@ -90,7 +90,6 @@ def extract_etf_data(html):
 
 
 def extract_mutual_fund_data(html):
-    # toDo: add ticker name as arg
     soup = bs4(html, 'lxml')
 
     def get_market_return(tr):
@@ -148,7 +147,6 @@ def extract_mutual_fund_data(html):
 
 
 def extract_stock_data(html):
-    # toDo: add ticker name as arg
     soup = bs4(html, 'lxml')
     
     def get_sum_data(text):
@@ -159,7 +157,7 @@ def extract_stock_data(html):
 
     profile = soup.title.text
     company_name = soup.find('span', 'stock-title').text
-    current_price = soup.find(text='Price').parent.next_sibling.text
+    current_price = soup.find(text=re.compile('Price')).parent.next_sibling.text
     market_cap = get_sum_data('Market Cap')
     avg_vol_ten_day = get_sum_data('Avg Vol (10-day)')
     eps = get_sum_data('EPS (TTM, GAAP)')
